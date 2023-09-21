@@ -6,6 +6,7 @@ import {
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+
 const RegisterAndLogin = () => {
   const [login, setLogin] = useState(false);
   const history = useNavigate();
@@ -34,7 +35,7 @@ const RegisterAndLogin = () => {
   };
   return (
     <div className='p-10 '>
-      <div className='card rounded-md py-12 px-4 bg-white'>
+      <div className='card rounded-md py-12 px-4 bg-white md:w-[550px] lg:w-[650px]'>
         <h1 className='font-bold text-[1.5rem] text-center'>
           {login ? 'SignIn' : 'SignUp'}
         </h1>
@@ -48,7 +49,7 @@ const RegisterAndLogin = () => {
             <input
               type='text'
               name='email'
-              className='border-b p-2'
+              className='border-b p-2 md:block md:w-full'
               placeholder='walebnji@gmail.com'
             />
             <br />
@@ -59,7 +60,7 @@ const RegisterAndLogin = () => {
             <input
               type='password'
               name='password'
-              className='border-b p-2 '
+              className='border-b p-2 md:block md:w-full '
               placeholder='******'
             />
             <br />
