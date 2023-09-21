@@ -12,8 +12,16 @@ import { Image } from './Image';
 import ImageSkeleton from './ImageSkeleton';
 import Skeleton from 'react-loading-skeleton';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import test from './assets/image2.jpg';
-import test0 from './assets/image1.jpg';
+import i1 from './assets/image2.jpg';
+import i2 from './assets/image1.jpg';
+import i3 from './assets/image3.jpg';
+import i4 from './assets/image4.jpg';
+import i5 from './assets/image5.jpg';
+import i6 from './assets/image6.jpg';
+import i7 from './assets/image7.jpg';
+import i8 from './assets/image8.jpg';
+import i9 from './assets/image9.jpg';
+import i10 from './assets/image10.jpg';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +31,7 @@ const Home = () => {
     setLoading(true);
     let timeOut = setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 2000);
     return () => {
       clearTimeout(timeOut);
     };
@@ -32,64 +40,64 @@ const Home = () => {
   const [imageArray, setImageArray] = useState([
     {
       id: 0,
-      src: test0,
-      description: 'a person sitting on top of a sand dune',
-      tag: 'person',
+      src: i1,
+      description: 'a girl standing',
+      
     },
     {
       id: 1,
-      src: test,
-      description: 'an aerial view of a mountain range in the desert',
-      tag: 'aerial',
+      src: i2,
+      description: 'a corridor',
+      
     },
     {
       id: 2,
-      src: 'https://images.unsplash.com/photo-1695051626405-e6a288c882d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHwzfHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'a statue of a woman sitting on top of a stone structure',
-      tag: 'statue',
+      src: i3,
+      description: 'a man on bike',
+      
     },
     {
       id: 3,
-      src: 'https://images.unsplash.com/photo-1695026513693-451e1aac043f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHw0fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'a subway station with a man walking through a tunnel',
-      tag: 'subway',
+      src: i4,
+      description: 'an array of buildings',
+      
     },
     {
       id: 4,
-      src: 'https://images.unsplash.com/photo-1694930103616-52043332f156?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHw1fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'a mountain covered in fog with trees below',
-      tag: 'mountain',
+      src: i5,
+      description: 'a girl standing',
+      
     },
     {
       id: 5,
-      src: 'https://images.unsplash.com/photo-1687360441221-ff5143d5cd5c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MXwxfGFsbHw2fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
+      src: i6,
       description:
-        'Portrait of an autistic man sitting on a park bench while using fidget spinners',
-      tag: 'Portrait',
+        'man in a forest',
+      
     },
     {
       id: 6,
-      src: 'https://images.unsplash.com/photo-1691135319989-8ae7dd70571a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHw3fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'a white car parked in a parking garage',
-      tag: 'car',
+      src: i7,
+      description: 'woman in desert',
+      
     },
     {
       id: 7,
-      src: 'https://images.unsplash.com/photo-1692911470431-9820cc52c01c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHw4fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'an empty subway station with stairs and railings',
-      tag: 'subway',
+      src: i8,
+      description: 'midnight stars',
+      
     },
     {
       id: 8,
-      src: 'https://images.unsplash.com/photo-1694930103692-d37f33cffc75?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHw5fHx8fHx8Mnx8MTY5NTIyNjYyM3w&ixlib=rb-4.0.3&q=85',
-      description: 'a view of a mountain covered in clouds',
-      tag: 'mountain',
+      src: i9,
+      description: 'midnight stars',
+      
     },
     {
       id: 9,
-      src: 'https://images.unsplash.com/photo-1694845479853-c9721af5a191?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MDQ1Njh8MHwxfGFsbHwxMHx8fHx8fDJ8fDE2OTUyMjY2MjN8&ixlib=rb-4.0.3&q=85',
-      description: 'a row of seats sitting on top of a train next to a window',
-      tag: 'train',
+      src: i10,
+      description: 'a mountain',
+      
     },
   ]);
 
@@ -108,32 +116,34 @@ const Home = () => {
   //const handle drag sorting
   const handleSort = () => {
     //duplicate items
-    let _fruitItems = [...imageArray];
+    let imageItems = [...imageArray];
 
     //remove and save the dragged item content
-    const draggedItemContent = _fruitItems.splice(dragItem.current, 1)[0];
+    const draggedItemContent = imageItems.splice(dragItem.current, 1)[0];
 
     //switch the position
-    _fruitItems.splice(dragOverItem.current, 0, draggedItemContent);
+    imageItems.splice(dragOverItem.current, 0, draggedItemContent);
 
     //reset the position ref
     dragItem.current = null;
     dragOverItem.current = null;
 
     //update the actual array
-    setImageArray(_fruitItems);
+    setImageArray(imageItems);
   };
 
   return (
     <div className='App wrapper '>
       <h1 className='text-3xl font-semibold'>Drag & drop photo gallery</h1>
 
-      <div className='container'>
         <input
           type='text'
           onChange={(e) => setSearchInput(e.target.value)}
           value={searchInput}
+          className='w-[60%] p-2 my-4 bg-gray-200 lg:w-[40%]'
+          placeholder='Input a tag'
         />
+      <div className='container'>
         {loading
           ? new Array(10).fill(null).map((i) => <Skeleton height='200px' />)
           : filteredImages?.map((image, index) => {
@@ -145,6 +155,7 @@ const Home = () => {
                   onDragEnter={(e) => (dragOverItem.current = index)}
                   onDragEnd={handleSort}
                   onDragOver={(e) => e.preventDefault()}
+                  className='cursor-pointer'
                 >
                   <img
                     src={image.src}
@@ -156,7 +167,7 @@ const Home = () => {
             })}
       </div>
 
-      <button onClick={handleClick}>SignOut</button>
+      <button onClick={handleClick} className='border block w-[80%] rounded-lg mt-8 button text-white py-2 mx-auto lg:w-[40%]'>SignOut</button>
     </div>
   );
 };
