@@ -26,6 +26,7 @@ import i10 from './assets/image10.jpg';
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -42,62 +43,51 @@ const Home = () => {
       id: 0,
       src: i1,
       description: 'a girl standing',
-      
     },
     {
       id: 1,
       src: i2,
       description: 'a corridor',
-      
     },
     {
       id: 2,
       src: i3,
       description: 'a man on bike',
-      
     },
     {
       id: 3,
       src: i4,
       description: 'an array of buildings',
-      
     },
     {
       id: 4,
       src: i5,
       description: 'a girl standing',
-      
     },
     {
       id: 5,
       src: i6,
-      description:
-        'man in a forest',
-      
+      description: 'man in a forest',
     },
     {
       id: 6,
       src: i7,
       description: 'woman in desert',
-      
     },
     {
       id: 7,
       src: i8,
       description: 'midnight stars',
-      
     },
     {
       id: 8,
       src: i9,
       description: 'midnight stars',
-      
     },
     {
       id: 9,
       src: i10,
       description: 'a mountain',
-      
     },
   ]);
 
@@ -128,7 +118,7 @@ const Home = () => {
     dragItem.current = null;
     dragOverItem.current = null;
 
-    //update the actual array
+    //update the image array
     setImageArray(imageItems);
   };
 
@@ -136,13 +126,13 @@ const Home = () => {
     <div className='App wrapper '>
       <h1 className='text-3xl font-semibold'>Drag & drop photo gallery</h1>
 
-        <input
-          type='text'
-          onChange={(e) => setSearchInput(e.target.value)}
-          value={searchInput}
-          className='w-[60%] p-2 my-4 bg-gray-200 lg:w-[40%]'
-          placeholder='Input a tag'
-        />
+      <input
+        type='text'
+        onChange={(e) => setSearchInput(e.target.value)}
+        value={searchInput}
+        className='w-[60%] p-2 my-4 bg-gray-200 lg:w-[40%]'
+        placeholder='Input a tag'
+      />
       <div className='container'>
         {loading
           ? new Array(10).fill(null).map((i) => <Skeleton height='200px' />)
@@ -156,6 +146,7 @@ const Home = () => {
                   onDragEnd={handleSort}
                   onDragOver={(e) => e.preventDefault()}
                   className='cursor-pointer'
+                  onDrop={(e) => e.preventDefault()}
                 >
                   <img
                     src={image.src}
@@ -167,7 +158,12 @@ const Home = () => {
             })}
       </div>
 
-      <button onClick={handleClick} className='border block w-[80%] rounded-lg mt-8 button text-white py-2 mx-auto lg:w-[40%]'>SignOut</button>
+      <button
+        onClick={handleClick}
+        className='border block w-[80%] rounded-lg mt-8 button text-white py-2 mx-auto lg:w-[40%]'
+      >
+        SignOut
+      </button>
     </div>
   );
 };
