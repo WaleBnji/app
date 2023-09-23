@@ -6,9 +6,9 @@ import {
 } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
-
 const RegisterAndLogin = () => {
   const [login, setLogin] = useState(false);
+  const [error, setError] = useState('');
   const history = useNavigate();
   const submitHandler = (e, type) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const RegisterAndLogin = () => {
           history('/home');
         })
         .catch((err) => {
-          alert(err.code);
+          setError(err.code);
           setLogin(true);
         });
     } else {
@@ -29,7 +29,7 @@ const RegisterAndLogin = () => {
           history('/home');
         })
         .catch((err) => {
-          alert(err.code);
+          setError(err.code);
         });
     }
   };
@@ -68,6 +68,9 @@ const RegisterAndLogin = () => {
           <button className='border block w-full rounded-lg mt-8 button text-white py-2'>
             {login ? 'SignIn' : 'SignUp'}
           </button>
+          <p className='test-lg text-rose-500 font-semibold text-center'>
+            {error && error}
+          </p>
         </form>
 
         <div className=' mt-28 text-center w-full text-[0.9rem] font-semibold'>
