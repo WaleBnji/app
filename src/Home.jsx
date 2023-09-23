@@ -152,7 +152,9 @@ const Home = () => {
                     src={image.src}
                     alt={image.description}
                     className='h-[200px] object-cover'
+                    
                   />
+                  <p className='bg-white'>{image.description}</p>
                 </div>
               );
             })}

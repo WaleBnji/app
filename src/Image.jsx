@@ -2,7 +2,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
 export function Image(props) {
-  const { src } = props;
+  const { src, tag } = props;
   // useSortable({ id: props.id });
 
   // const styles = {
@@ -23,6 +23,7 @@ export function Image(props) {
         alt='draggable element'
         className={props.className}
       />
+      <h3>{tag}</h3>
     </div>
   );
 }
